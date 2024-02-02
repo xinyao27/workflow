@@ -11,7 +11,5 @@ jobs:
         with:
           url: https://skyscraper-dashboard.vercel.app/api/dashboard/tasks
           method: POST
-          body: |
-            {
-              "url":"<<<${{ on.rss.outputs.link }}>>>"
-            }
+          content-type: application/json
+          data: '{ "url":"<<<${{ on.rss.outputs.link }}>>>" }'
