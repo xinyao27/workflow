@@ -1,0 +1,15 @@
+on:
+  rss:
+    url: https://rsshub.app/bilibili/partion/ranking/124/1
+jobs:
+  request:
+    name: Make a HTTP Request
+    runs-on: ubuntu-latest
+    steps:
+      - name: Make a HTTP Request
+        uses: actionsflow/axios@v1
+        with:
+          url: https://skyscraper-dashboard.vercel.app/api/dashboard/tasks
+          method: POST
+          content-type: application/json
+          data: '{ "url":"<<<${{ on.rss.outputs.link }}>>>" }'
