@@ -1,17 +1,17 @@
 on:
   rss:
-    url: https://hnrss.org/newest?points=300&count=3
+    url: https://rsshub.app/bilibili/ranking/0/1/1
 jobs:
-  print:
-    name: Print
+  request:
+    name: Make a HTTP Request
     runs-on: ubuntu-latest
     steps:
-      - name: Print Outputs
-        env:
-          title: ${{on.rss.outputs.title}}
-          contentSnippet: ${{on.rss.outputs.contentSnippet}}
-          link: ${{on.rss.outputs.link}}
-        run: |
-          echo title: $title
-          echo contentSnippet: $contentSnippet
-          echo link: $link
+      - name: Make a HTTP Request
+        uses: actionsflow/axios@v1
+        with:
+          url: https://skyscraper-dashboard.vercel.app/api/dashboard/tasks
+          method: POST
+          body: |
+            {
+              "url":"<<<${{ on.rss.outputs.link }}>>>"
+            }
