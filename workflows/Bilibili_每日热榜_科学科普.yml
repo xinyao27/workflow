@@ -9,7 +9,8 @@ jobs:
       - name: Make a HTTP Request
         uses: actionsflow/axios@v1
         with:
-          url: https://skyscraper-dashboard.vercel.app/api/dashboard/tasks
+          url: ${{ secrets.target_url }}
+          bearer-token: ${{ secrets.bearer_token }}
           method: POST
           content-type: application/json
           data: '{ "url":"<<<${{ on.rss.outputs.link }}>>>" }'
