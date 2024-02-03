@@ -10,7 +10,6 @@ jobs:
         uses: actionsflow/axios@v1
         with:
           url: ${{ secrets.target_url }}
-          bearer-token: ${{ secrets.bearer_token }}
           method: POST
           content-type: application/json
           data: '{ "url":"<<<${{ on.rss.outputs.link }}>>>" }'
