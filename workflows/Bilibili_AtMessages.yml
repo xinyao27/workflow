@@ -1,6 +1,3 @@
-on:
-  rss:
-    url: https://rsshub.app/bilibili/partion/ranking/182/1
 jobs:
   request:
     name: Make a HTTP Request
@@ -9,7 +6,6 @@ jobs:
       - name: Make a HTTP Request
         uses: actionsflow/axios@v1
         with:
-          url: ${{ secrets.target_url }}
+          url: ${{ secrets.AT_MESSAGES_URL }}
           method: POST
           content-type: application/json
-          data: '{ "url":"<<<${{ on.rss.outputs.link }}>>>" }'
